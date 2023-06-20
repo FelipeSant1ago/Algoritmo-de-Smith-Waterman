@@ -1,0 +1,13 @@
+# Ignore Everything
+*
+
+# But not .py, .cpp, .c, .cc, .txt
+!*.py
+!*.cpp
+!*.c
+!*.cc
+!*.txt
+# Or directories
+!*/
+!.gitignore
+!README.md
