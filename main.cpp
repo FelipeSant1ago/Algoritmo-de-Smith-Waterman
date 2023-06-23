@@ -184,36 +184,14 @@ void recebeEntrada(string& s, string& t){
     s = "";
     t = "";
     if(arquivo.is_open()){
+        getline(arquivo,s);
+        getline(arquivo,t);
         cout << "input aberto com sucesso" << endl;
-        string linha;
-        getline(arquivo,linha);
-        int cont = 0;
-        for(int i = 0; i < linha.size(); i++){
-            if(linha[i] == '\''){
-                i++;
-                while( i < linha.size() && linha[i] != '\''){
-                    s += linha[i++];
-                }
-                cont = i;
-                break;
-
-            }
-        }
-        cont++;
-        for(int i = cont; i < linha.size(); i++){
-            if(linha[i] == '\''){
-                i++;
-                while( i < linha.size() && linha[i] != '\''){
-                    t += linha[i++];
-                }
-                break;
-
-            }
-        }
+       
 
     }
     else{
-        cout << "erro ao abri o arquivo de input" << endl;
+        cout << "erro ao abrir o arquivo de input" << endl;
     }
 
 
@@ -244,9 +222,13 @@ int main(){
     vector<vector<char>> alinhamento(tamanhoAlinhamento, vector<char>(2,'0'));
 
     int maxWidth = 0;
+    cout << "construindo matriz de Score" << endl;
     constroiMatrizScore(matrizScores,dnaVertical,dnaHorizontal,maxWidth);
+    cout << "Fazendo o backtracking para descobrir o alinhamento" << endl;
     constroiAlinhamentoGlobal(matrizScores,dnaVertical,dnaHorizontal,alinhamento);
+    cout << "Gerando resultados" << endl;
     imprimeSaida(matrizScores,alinhamento,dnaVertical,dnaHorizontal,maxWidth);
+    cout << "End of Program" << endl;
 
 
 
